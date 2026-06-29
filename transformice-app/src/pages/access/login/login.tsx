@@ -13,15 +13,15 @@ function Login() {
     const [loading, setLoad] = useState(false);
 
     function Authenticate() {
-        navigate(PATHS.HOME);
+        setLoad(true);
 
-        /*setLoad(true);
         AuthenticateController(user).then((res) => {
-             navigate(PATHS.HOME);
+            localStorage.setItem("token", res.TokenAccess);
+            navigate(PATHS.HOME);
         }).catch((e) => {
             setLoad(false);
-            alert(e);
-        });*/
+            alert(e.data.message);
+        });
     }
 
     return (
