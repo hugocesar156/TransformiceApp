@@ -1,21 +1,27 @@
 import './style.css'
 import queijo from '../../../assets/Queijo.webp'
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { IAuthenticationRequest } from '../../../models/access/requests/IAuthenticationRequest'
 import { AuthenticateController } from '../../../controllers/access/UserController'
+import { PATHS } from "../../../routes/paths";
 
 function Login() {
+    const navigate = useNavigate();
+
     const [user, setUser] = useState<IAuthenticationRequest>({});
     const [loading, setLoad] = useState(false);
 
     function Authenticate() {
-        setLoad(true);
-        AuthenticateController(user).then((res) => {
+        navigate(PATHS.HOME);
 
+        /*setLoad(true);
+        AuthenticateController(user).then((res) => {
+             navigate(PATHS.HOME);
         }).catch((e) => {
             setLoad(false);
             alert(e);
-        });
+        });*/
     }
 
     return (
