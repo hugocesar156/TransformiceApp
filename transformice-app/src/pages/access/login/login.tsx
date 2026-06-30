@@ -1,4 +1,4 @@
-import './style.css'
+import style from './style.module.css'
 import queijo from '../../../assets/Queijo.webp'
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
@@ -15,8 +15,8 @@ function Login() {
     function Authenticate() {
         setLoad(true);
 
-        AuthenticateController(user).then((res) => {
-            localStorage.setItem("token", res.TokenAccess);
+        AuthenticateController(user).then((response) => {
+            localStorage.setItem("token", response.tokenAccess);
             navigate(PATHS.HOME);
         }).catch((e) => {
             setLoad(false);
@@ -26,34 +26,34 @@ function Login() {
 
     return (
         <>
-            <div className='container'>
-                <div className='container-content'>
+            <div className={style.container}>
+                <div className={style.container_content}>
                     <form>
-                        <h4 className='title'>Transformice!</h4>
-                        <div className='container-img'>
+                        <h4 className={style.title}>Transformice!</h4>
+                        <div className={style.container_img}>
                             <img src={queijo} width={157} height={108} />
                         </div>
-                        <div className='row'>
-                            <div className='col'>
-                                <input type='text' className='form-control input-login' placeholder='Usuário'
+                        <div className="row">
+                            <div className="col">
+                                <input type="text" className={style.input_login + ' form-control'} placeholder="Usuário"
                                     onChange={(e) => {
-                                        user.AccountName = e.target.value;
+                                        user.accountName = e.target.value;
                                         setUser(user);
                                     }} />
                             </div>
                         </div>
-                        <div className='row mt-2'>
-                            <div className='col'>
-                                <input type='password' className='form-control input-login' placeholder='Senha'
+                        <div className="row mt-2">
+                            <div className="col">
+                                <input type="password" className={style.input_login + ' form-control'} placeholder="Senha"
                                     onChange={(e) => {
-                                        user.Password = e.target.value;
+                                        user.password = e.target.value;
                                         setUser(user);
                                     }} />
                             </div>
                         </div>
-                        <div className='row mt-3'>
-                            <button className='btn btn-success' type='button' disabled={loading} onClick={Authenticate}>
-                                {!loading ? 'Entrar' : <div className="spinner-grow spinner-grow-sm" role="status"></div>}
+                        <div className="row mt-3">
+                            <button className="btn btn-success" type="button" disabled={loading} onClick={Authenticate}>
+                                {!loading ? "Entrar" : <div className="spinner-grow spinner-grow-sm" role="status"></div>}
                             </button>
                         </div>
                     </form>

@@ -1,4 +1,4 @@
 export interface IAuthenticationRequest {
-    AccountName?: string,
-    Password?: string
+    accountName?: string,
+    password?: string
 }
