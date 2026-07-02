@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import { GetAccountService } from "../../services/account/AccountService";
-import { IAccountResponse } from "../../models/account/responses/IAccountResponse";
+import { AccountResponse, IAccountResponse } from "../../models/account/responses/IAccountResponse";
 import Profile from "../../components/account/modal/profile";
+import Room from "../room/room";
 
 function Home() {
     useEffect(() => {
         GetAccount();
     }, []);
 
-    const [account, setAccount] = useState<IAccountResponse | undefined>();
+    const [account, setAccount] = useState<IAccountResponse>(AccountResponse());
     const [modalProfile, setModalProfile] = useState(false);
+
+    const [room, setRoom] = useState(false);
 
     function GetAccount() {
         GetAccountService().then((response) => {
@@ -30,6 +33,14 @@ function Home() {
                     account={account}
                     onClose={() => setModalProfile(false)}
                 />
+
+                <div>
+                    <a href="#" onClick={() => { setRoom(true) }}>Entrar em Sala</a>
+                </div>
+                {room && (<Room
+                    account={account}
+                    onClose={() => setRoom(false)}
+                />)}
             </div>
         </>
     );

@@ -1,6 +1,6 @@
 import { IAuthenticationRequest } from "../../models/access/requests/IAuthenticationRequest";
 import Service from "../Service";
-import Axios from "../ConfigAPI";
+import Axios from "../configs/ConfigAPI";
 import { IAuthenticationResponse } from "../../models/access/responses/IAuthenticationResponse";
 
 export function AuthenticateService(request: IAuthenticationRequest) {
