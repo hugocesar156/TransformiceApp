@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { GetAccountService } from "../../services/account/AccountService";
 import { AccountResponse, IAccount } from "../../models/account/responses/IAccount";
 import Profile from "../../components/account/modal/profile";
 import Room from "../room/room";
 import { connnectClient } from "../../services/configs/ConfigSignalIR";
+import { GetAccountController } from "../../controllers/account/AccountController";
 
 function Home() {
     useEffect(() => {
@@ -17,8 +17,8 @@ function Home() {
     const [room, setRoom] = useState(false);
 
     function GetAccount() {
-        GetAccountService().then((response) => {
-            setAccount(response.data);
+        GetAccountController().then((response) => {
+            setAccount(response);
         }).catch(() => {
 
         })
