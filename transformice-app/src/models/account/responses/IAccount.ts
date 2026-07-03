@@ -1,6 +1,6 @@
-import { ITitleResponse } from "./ITitleResponse";
+import { ITitle } from "./ITitle";
 
-export interface IAccountResponse {
+export interface IAccount {
     id: number,
     name: string,
     gender: string,
@@ -16,10 +16,10 @@ export interface IAccountResponse {
     firstCheese: number,
     cheese: number,
     bootcamp: number,
-    titles: ITitleResponse[]
+    titles: ITitle[]
 }
 
-export const AccountResponse = (account?: Partial<IAccountResponse>): IAccountResponse => {
+export const AccountResponse = (account?: Partial<IAccount>): IAccount => {
   return {
     id: 0,
     name: "",

@@ -1,5 +1,5 @@
 import { Modal } from "react-bootstrap";
-import { IAccountResponse } from "../../../models/account/responses/IAccountResponse";
+import { IAccountResponse } from "../../../models/account/responses/IAccount";
 import { useState } from "react";
 
 interface ProfileProps {

@@ -1,18 +1,17 @@
 import { useEffect } from "react";
-import { conectar } from "../../services/room/RoomService";
 import { connection } from "../../services/configs/ConfigSignalIR";
-import { IAccountResponse } from "../../models/account/responses/IAccountResponse";
+import { IAccount } from "../../models/account/responses/IAccount";
+import { joinRoom, leaveRoom } from "../../services/room/RoomService";
 
 interface RoomPropos {
-    account: IAccountResponse,
+    account: IAccount,
     onClose: () => void;
 }
 
 function Room({ account, onClose }: RoomPropos) {
     useEffect(() => {
-        conectar(account).then(() => { });
-
-        connection.on("SendMessage", message => {
+        joinRoom(account.name);
+        connection.on("ReceiveMessage", message => {
             console.log(message);
         });
     }, []);
@@ -21,7 +20,7 @@ function Room({ account, onClose }: RoomPropos) {
         <>
             <div>
                 <button className="btn btn-danger" onClick={() => {
-                    connection.stop();
+                    leaveRoom(account.name);
                     onClose();
                 }}>Sair da Sala</button>
             </div>

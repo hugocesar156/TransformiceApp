@@ -5,6 +5,9 @@ export const connection = new signalR.HubConnectionBuilder()
         accessTokenFactory: () => {
             return localStorage.getItem("token") ?? "";
         }
-    })
-    .withAutomaticReconnect()
-    .build();
+    }).withAutomaticReconnect().build();
+
+export async function connnectClient() {
+    if (connection.state === "Disconnected")
+         await connection.start();  
+}

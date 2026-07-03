@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { GetAccountService } from "../../services/account/AccountService";
-import { AccountResponse, IAccountResponse } from "../../models/account/responses/IAccountResponse";
+import { AccountResponse, IAccount } from "../../models/account/responses/IAccount";
 import Profile from "../../components/account/modal/profile";
 import Room from "../room/room";
+import { connnectClient } from "../../services/configs/ConfigSignalIR";
 
 function Home() {
     useEffect(() => {
         GetAccount();
+        connnectClient();
     }, []);
 
-    const [account, setAccount] = useState<IAccountResponse>(AccountResponse());
+    const [account, setAccount] = useState<IAccount>(AccountResponse());
     const [modalProfile, setModalProfile] = useState(false);
 
     const [room, setRoom] = useState(false);
