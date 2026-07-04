@@ -36,13 +36,13 @@ function Home() {
                     onClose={() => setModalProfile(false)}
                 />
 
-                <div>
-                    <a href="#" onClick={() => { setRoom(true) }}>Entrar em Sala</a>
-                </div>
-                {room && (<Room
-                    account={account}
-                    onClose={() => setRoom(false)}
-                />)}
+                {!room ? (<a href="#" onClick={() => { setRoom(true) }}>Entrar em Sala</a>)
+                    :
+                    (<Room
+                        account={account}
+                        onClose={() => setRoom(false)}
+                    />)}
+
             </div>
         </>
     );

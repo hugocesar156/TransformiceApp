@@ -1,10 +1,10 @@
 import { Modal } from "react-bootstrap";
-import { IAccountResponse } from "../../../models/account/responses/IAccount";
+import { IAccount } from "../../../models/account/responses/IAccount";
 import { useState } from "react";
 
 interface ProfileProps {
     show: boolean;
-    account: IAccountResponse | undefined
+    account: IAccount | undefined
     onClose: () => void;
 }
 

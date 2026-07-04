@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { connection } from "../../services/configs/ConfigSignalIR";
 import { IAccount } from "../../models/account/responses/IAccount";
 import { joinRoom, leaveRoom } from "../../services/room/RoomService";
+import Platform from "../../components/room/platform";
 
 interface RoomPropos {
     account: IAccount,
@@ -25,7 +26,7 @@ function Room({ account, onClose }: RoomPropos) {
                 }}>Sair da Sala</button>
             </div>
             <div>
-                Room
+                <Platform />
             </div>
         </>
     );
